@@ -1,0 +1,16 @@
+package rmi;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Registry r= LocateRegistry.getRegistry(1099);
+            SIInterface si=(SIInterface) r.lookup("SI");
+            System.out.println("simple interest="+si.SI(1000,2,10));
+        } catch (Exception e) {
+            System.out.println("client error"+e);
+        }
+    }
+}
