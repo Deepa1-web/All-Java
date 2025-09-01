@@ -1,0 +1,33 @@
+//class 1 
+public class Parent1 {
+    public void parent1(){
+        System.out.println("I am parent class");
+    }
+
+}
+//interface 1
+public interface Parent2 {
+     void parent2();
+
+}
+//child
+
+public class Child extends Parent1 implements Parent2{
+    @Override
+    public void  parent2(){
+        System.out.println("I am parent interface");
+    }
+    public void child(){
+        System.out.println("i am child of parent class and parent interface");
+    }
+
+    public static void main(String[] args) {
+        Child c1=new Child();
+        Child c2=new Child();
+        c1.parent1();
+        c2.parent2();
+        c2.child();
+    }
+}
+
+
