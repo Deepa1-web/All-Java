@@ -1,0 +1,55 @@
+package javafx;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.io.IOException;
+
+public class LoginPage extends Application {
+    @Override
+    public void start(Stage stage) throws Exception {
+        Label l1 = new Label("Username");
+        Label l2 = new Label("password");
+        TextField t1 = new TextField();
+        PasswordField ps = new PasswordField();
+        Button btn = new Button("Login");
+        GridPane gp = new GridPane();
+        gp.setVgap(10);
+        gp.addRow(1, l1, t1);
+        gp.addRow(2, l2, ps);
+        VBox v = new VBox();
+        v.getChildren().addAll(gp, btn);
+
+
+        btn.setOnAction(actionEvent -> {
+            String username = t1.getText();
+            String password = ps.getText();
+            if (username.equals("deepa") && password.equals("deepa"))
+            {
+                System.out.println("login successfully");
+            } else {
+                System.out.println("invalid");
+            }
+
+        });
+
+        stage.setTitle("LoginPge");
+        Scene scene = new Scene( v,400, 400);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+
+    }
+}
