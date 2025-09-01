@@ -1,0 +1,16 @@
+package rmi;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            Registry r= LocateRegistry.createRegistry(1099);
+            r.rebind("SI",new SIInterfaceImpl());
+            System.out.println("server ready");
+        } catch (Exception e) {
+            System.out.println("server error"+e);
+        }
+    }
+}
