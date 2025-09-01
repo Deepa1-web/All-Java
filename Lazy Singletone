@@ -1,0 +1,26 @@
+
+
+public class SingletoneLazy {
+    public static SingletoneL instance;
+    public SingletoneL(){
+
+    }
+    public static SingletoneL getInstance(){
+        if(instance==null) {
+            instance = new SingletoneL();
+        }
+            return instance;
+
+    }
+    public  void greeting(){
+        System.out.println("good afternoon");
+    }
+}
+
+
+public class Main2 {
+    public static void main(String[] args) {
+        SingletoneL instance=SingletoneL.getInstance();
+        instance.greeting();
+    }
+}
