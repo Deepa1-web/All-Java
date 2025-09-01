@@ -1,0 +1,16 @@
+
+public class BalanceDemo {
+    public static void main(String... args) {
+        int balance = 80;
+        while (balance != 0) {
+            balance--;
+        }
+        if (balance < 5) {
+            try {
+                throw new LowBalanceException("balnce low recharge in time");
+            } catch (LowBalanceException lbe) {
+                System.out.println(lbe);
+            }
+        }
+    }
+}
