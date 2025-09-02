@@ -1,0 +1,58 @@
+
+//server
+package udpsquare;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.ByteBuffer;
+
+public class Server {
+    public static void main(String[] args)throws Exception {
+        DatagramSocket ds=new DatagramSocket(9990);
+        System.out.println("server ready");
+        while (true){
+        byte[]dReceive=new byte[8];
+        DatagramPacket dpReceive=new DatagramPacket(dReceive, dReceive.length);
+        ds.receive(dpReceive);
+
+  double n = ByteBuffer.wrap(dpReceive.getData()).getDouble();
+            System.out.println("received number:"+n);
+            double square=n*n;
+            byte []dSend=ByteBuffer.allocate(8).putDouble(square).array();
+            InetAddress ia=InetAddress.getLocalHost();
+            DatagramPacket dpSend=new DatagramPacket(dSend, dSend.length,ia,dpReceive.getPort());
+            ds.send(dpSend);
+
+    }
+}
+}
+//client
+package udpsquare;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.ByteBuffer;
+import java.util.Scanner;
+
+public class Client {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket ds = new DatagramSocket();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter a number");
+        double n = sc.nextDouble();
+
+            byte[] dSend = ByteBuffer.allocate(8).putDouble(n).array();
+            InetAddress ia = InetAddress.getLocalHost();
+            DatagramPacket dpSend = new DatagramPacket(dSend, dSend.length, ia, 9990);
+            ds.send(dpSend);
+            byte[] dReceive = new byte[8];
+            DatagramPacket dpReceive = new DatagramPacket(dReceive, dReceive.length);
+            ds.receive(dpReceive);
+            double square = ByteBuffer.wrap((dReceive)).getDouble();
+
+            System.out.println("Square: " + square);
+        }
+
+}
