@@ -1,0 +1,21 @@
+
+
+//superclass
+public class Calculator {
+    public void sum(int a,int b) {
+    System.out.println("sum="+(a+b));
+    }
+}
+//subclass
+
+
+public class ScientificCalculator extends Calculator{
+    public void sum(int a,int b){
+        System.out.println("sum is:"+(a+b));
+    }
+
+    public static void main(String[] args) {
+        ScientificCalculator s =new ScientificCalculator();
+        s.sum(3,5);
+    }
+}
