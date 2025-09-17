@@ -1,0 +1,6 @@
+
+//interface 1
+public interface Parent2 {
+     void parent2();
+
+}
