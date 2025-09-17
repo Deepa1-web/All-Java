@@ -1,0 +1,50 @@
+
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Login extends JFrame{
+    public Login(){
+
+        JLabel l1=new JLabel("username");
+        JLabel l2=new JLabel("password");
+        JTextField t1=new JTextField();
+        JPasswordField t2=new JPasswordField();
+        JButton b=new JButton("Login");
+        l1.setBounds(2,2,150,20);
+        l2.setBounds(2,30,150,20);
+        t1.setBounds(160,2,150,20);
+        t2.setBounds(160,30,150,20);
+        b.setBounds(6,60,100,20);
+        add(l1);
+        add(l2);
+        add(t1);
+        add(t2);
+        add(b);
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String un=t1.getText();
+                String ps=t2.getText();
+                if(un.equals("admin")&& ps.equals("admin")){
+                  JOptionPane.showMessageDialog(Login.this,"successfully login");
+                }
+                else{
+                    JOptionPane.showMessageDialog(Login.this,"invalid");
+                }
+
+
+            }
+        });
+        setTitle("Login Page");
+        setSize(100,100);
+        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Login();
+    }
+}
