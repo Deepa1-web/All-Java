@@ -1,0 +1,32 @@
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class Create {
+    public static void main(String[] args) {
+        try {
+Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("driver loaded successfully");
+            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_registration","root","");
+            String sql="INSERT INTO tbl_user(FirstName,LastName,Mobile,Email,Password)VALUES(?,?,?,?,?,?)";
+            PreparedStatement stmt=conn.prepareStatement(sql);
+            stmt.setString(1,"Deepa");
+            stmt.setString(2,"Paneru");
+            stmt.setString(3,"1263984309");
+            stmt.setString(4,"deepapaneru220@gmail.com");
+            stmt.setString(5,"234");
+            stmt.setString(5,"234");
+            int res=stmt.executeUpdate();
+            if(res>0){
+                System.out.println("inserted");
+            }
+            else
+                System.out.println("not insertedd");
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
