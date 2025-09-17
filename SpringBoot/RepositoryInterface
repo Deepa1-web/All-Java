@@ -1,0 +1,4 @@
+/repository interface
+@Repository
+public interface StudentRepository extends JpaRepository<Student,int>{
+}
