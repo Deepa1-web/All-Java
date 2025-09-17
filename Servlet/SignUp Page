@@ -1,0 +1,29 @@
+//jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SignUp Page</title>
+</head>
+<body>
+<h1>SignUp Page</h1>
+<form action="register" method="post">
+
+FirstName:<input type="text" name="FirstName" placeholder="enter firstname"><br>
+<label>Lastname</label><br>
+<input type="text" name="LastName" placeholder="enter lastname"><br>
+<label>Mobile</label><br>
+<input type="number" name="Mobile" placeholder="enter mobile No"><br>
+<label>Email</label><br>
+<input type="email" name="Email" placeholder="enter email"><br>
+<label>Password</label><br>
+<input type="password" name="Password" placeholder="enter password"><br>
+<label>ConfirmPassword</label><br>
+<input type="password" name="ConfirmPassword" placeholder="confirm  password"><br><br>
+<button>Register</button>
+</form>https://github.com/Deepa1-web/All-Java/commit/34623cb045b8257c27b189b4d159bc7d32164af9
+</body>
+</html>
+
