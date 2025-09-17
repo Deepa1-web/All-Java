@@ -1,0 +1,14 @@
+@RestController
+@RequestMapping("/Student")
+public class StudentContrroller{
+@Autowired
+StudentRepository sr;
+@GetMapping
+public List<Student>getAll(){
+return sr.findAll();
+}
+@PostMapping
+public Student saveStudentRecord(@RequestBody Student s){
+return sr.save(s);
+}
+}
