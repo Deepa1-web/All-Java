@@ -1,0 +1,14 @@
+
+//odd 
+public class OddDisplay implements Runnable{
+    @Override
+    public void run(){
+        int odd=1;
+        int count=0;
+        while (count<20){
+            System.out.println("odd:"+odd);
+            odd=odd+2;
+            count++;
+        }
+    }
+}
