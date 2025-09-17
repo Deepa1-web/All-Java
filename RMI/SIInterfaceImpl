@@ -1,0 +1,15 @@
+/interface implementation
+
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class SIInterfaceImpl extends UnicastRemoteObject implements SIInterface {
+    public SIInterfaceImpl()throws RemoteException{
+      super(0);
+    }
+    @Override
+    public double SI(double P,double T,double R)throws RemoteException{
+        return (P*T*R);
+    }
+}
