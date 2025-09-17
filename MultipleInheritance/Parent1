@@ -1,0 +1,7 @@
+//class 1 
+public class Parent1 {
+    public void parent1(){
+        System.out.println("I am parent class");
+    }
+
+}
