@@ -1,0 +1,12 @@
+//interface
+
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface SIInterface extends Remote {
+    public double SI(double P,double T,double R)throws RemoteException;
+
+}
+
+
