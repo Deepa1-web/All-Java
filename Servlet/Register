@@ -1,0 +1,62 @@
+//servlet
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/register")
+public class Register extends HttpServlet {
+	
+
+@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		out.print("Welcome");
+		try {
+			String firstName = request.getParameter("FirstName");
+			String lastName = request.getParameter("LastName");
+			String email = request.getParameter("Email");
+			String mobile = request.getParameter("Mobile");
+			String password = request.getParameter("Password");
+			//String confirmPassword = request.getParameter("confirm_password");
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("Driver loaded successfully...");
+
+			//database connection
+			Connection con =
+					DriverManager.getConnection("jdbc:mysql://localhost:3360/db_registration",
+							"root", "");
+			System.out.println("Database connected successfully....");
+
+			String sql = "INSERT INTO tbl_users(first_name, last_name, email, mobile, password)" +
+					" VALUES(?,?,?,?,?)";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			stmt.setString(3, email);
+			stmt.setString(4, mobile);
+			stmt.setString(5, password);
+			int res = stmt.executeUpdate();
+			if (res > 0) {
+				out.print("Registration Success");
+			}else {
+				out.print("Sorry tp register");
+			}
+
+
+		}catch(Exception e) {
+			out.print(e.getMessage());
+		}
+	}
+
+}
