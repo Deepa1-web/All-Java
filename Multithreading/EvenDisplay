@@ -1,0 +1,14 @@
+
+//even
+public class EvenDisplay implements Runnable {
+    @Override
+    public void run(){
+        int count=0;
+        int even=2;
+      while(count<20){
+            System.out.println("even:"+even);
+            even=even+2;
+            count++;
+        }
+    }
+}
