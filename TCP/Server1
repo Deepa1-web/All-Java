@@ -1,0 +1,32 @@
+
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+
+public class Server1 {
+    public static void main(String[] args) {
+        try {
+            ServerSocket ss=new ServerSocket(1235);
+            System.out.println("server ready");
+
+                Socket s=ss.accept();
+                DataInputStream din=new DataInputStream(s.getInputStream());
+               DataOutputStream dout=new DataOutputStream(s.getOutputStream());
+
+                while (true){
+              double n=din.readDouble();
+                   System.out.println("received no="+n);
+                    double square=n*n;
+                    dout.writeDouble(square);
+                  System.out.println("square:"+square);
+
+                }
+
+        } catch (Exception e) {
+            System.out.println("server error"+e);
+        }
+    }
+}
