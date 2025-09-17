@@ -1,0 +1,13 @@
+//model class
+@Entity
+@Tabel(name="tbl_Student")
+public class Student{
+@Id
+@GenereatedValue(strategy=GenerationType.IDENTITY")
+int id;
+@Column (name="fname",length=30,nullable=false)
+String firstName;
+String lastName;
+@Column (unique=true,length=50)
+String email;
+}
