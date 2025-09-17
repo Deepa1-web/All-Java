@@ -1,0 +1,14 @@
+
+//evenodd display
+public class OddEvenDisplay {
+    public static void main(String[] args) {
+        EvenDisplay ed=new EvenDisplay();
+        OddDisplay od=new OddDisplay();
+        Thread te=new Thread(ed);
+        Thread to=new Thread(od);
+        te.setPriority(Thread.MAX_PRIORITY);
+        to.setPriority(Thread.MIN_PRIORITY);
+        te.start();
+        to.start();
+    }
+}
