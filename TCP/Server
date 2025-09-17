@@ -1,0 +1,30 @@
+package tcpcommunication;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            ServerSocket ss =new ServerSocket(1234);
+            System.out.println("server ready");
+            while(true){
+                Socket s=ss.accept();
+
+                DataInputStream din=new DataInputStream(s.getInputStream());
+                DataOutputStream dout=new DataOutputStream(s.getOutputStream());
+                Scanner sc=new Scanner(System.in);
+                System.out.println("enter your meassage");
+                while (true){
+                    System.out.println("client:"+din.readUTF());
+                    dout.writeUTF(sc.nextLine());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("server error"+e);
+        }
+    }
+}
